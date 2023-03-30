@@ -8,6 +8,7 @@ const spanLive = document.getElementById('lives');
 const spanTime = document.getElementById('time');
 const spanRecod = document.getElementById('recod');
 const pResult = document.getElementById('result');
+const btnreload = document.getElementById('reload');
 
 let canvasSize;
 let elementSize ;
@@ -202,7 +203,7 @@ btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
 btnRight.addEventListener('click', moveRight);
 btnDown.addEventListener('click', moveDown);
-
+btnreload.addEventListener('click', fReload);
 function moveByKeys(event){
     if ( event.key == 'ArrowUp') moveUp();
     else if (event.key == 'ArrowLeft') moveLeft();
@@ -246,6 +247,9 @@ function moveDown(){
        playerPosition.y += elementSize;
         startGame(); 
     }
+}
+function fReload(){
+    location.reload();
 }
 
 
