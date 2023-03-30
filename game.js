@@ -99,7 +99,10 @@ function movePlayer() {
     const giftCollision = giftCollisionX && giftCollisionY;
 
     if(giftCollision) {
-        levelWin();
+        setTimeout(function() {
+            levelWin();
+          }, 300,);
+          
     }
 
     const enemyCollision = enemyPositions.find(enemy => {
@@ -109,7 +112,14 @@ function movePlayer() {
     });
 
     if(enemyCollision) {
-        levelFail();
+        setTimeout(function() {
+            enemyPositions = game.fillText(emojis['BOMB_COLLISION'], playerPosition.x, playerPosition.y);
+          }, 100);
+
+          setTimeout(function() {
+            levelFail();
+          },400,);
+          
     }
 
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
@@ -136,8 +146,9 @@ function setCanvasSize() {
 }
 
 function levelWin() {
-    console.log('subiste de nivel');
+    
     level++;
+    
     startGame();
 }
 
@@ -160,7 +171,7 @@ function levelFail() {
 function gameWIn(){
     console.log('you win');
     clearInterval(timeInterval);        
-
+    
     const recordTime = localStorage.getItem('record_time');
     const playerTime = Date.now() - timeStart;
 
@@ -174,7 +185,7 @@ function gameWIn(){
         
     }else {
         localStorage.setItem('record_time', playerTime);
-        pResult.innerHTML = 'no hay records registrados';
+        pResult.innerHTML = 'Te reto a superar ese record';
     }
     console.log({recordTime, playerTime});  
 
