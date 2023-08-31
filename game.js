@@ -224,7 +224,7 @@ function moveByKeys(event){
 
 function moveUp(){
     console.log('arriba'); 
-    if((playerPosition.y - elementSize) < elementSize )  {
+    if((playerPosition.y - elementSize) < elementSize -1 )  {
         console.log('a');
     }else {
        playerPosition.y -= elementSize;
